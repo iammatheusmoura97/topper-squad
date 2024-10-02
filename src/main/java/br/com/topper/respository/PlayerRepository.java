@@ -11,4 +11,6 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
 
     Optional<Player> findPlayerByNameAndClub(String name, String club);
 
+    Optional<Player> findPlayerById(Long id);
+
 }

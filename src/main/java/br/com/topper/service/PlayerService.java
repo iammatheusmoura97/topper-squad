@@ -1,9 +1,12 @@
 package br.com.topper.service;
 
+import br.com.topper.dto.PlayerDTO;
 import br.com.topper.dto.request.PlayerRequest;
 
 public interface PlayerService {
 
-    void savePlayer(PlayerRequest requestDto);
+    PlayerDTO savePlayer(PlayerRequest requestDto);
+
+    PlayerDTO getPlayer(Long id);
 
 }

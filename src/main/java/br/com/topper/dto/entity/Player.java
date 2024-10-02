@@ -1,5 +1,6 @@
 package br.com.topper.dto.entity;
 
+import br.com.topper.dto.PlayerDTO;
 import br.com.topper.dto.enuns.ClubsEnum;
 import br.com.topper.dto.enuns.PositionEnum;
 import br.com.topper.dto.enuns.StatusPlayerEnum;
@@ -37,6 +38,17 @@ public class Player {
         this.price = price;
         this.status = StatusPlayerEnum.valueOfStatus(status);
         this.isBought = isBought;
+    }
+
+    public PlayerDTO convertToDto(Player player) {
+        return PlayerDTO.builder()
+                .name(player.getName())
+                .club(player.getClub())
+                .position(player.getPosition())
+                .price(player.getPrice())
+                .status(player.getStatus())
+                .isBought(player.getIsBought())
+                .build();
     }
 
 }

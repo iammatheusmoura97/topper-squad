@@ -1,11 +1,13 @@
 package br.com.topper.dto.request;
 
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class DefenseStatisticsRequest {
 
-    private Long desarme;
-    private Boolean saldoGols;
-    private Long faltaCometida;
+    private Long tackle;
+    private Boolean goalDifference;
+    private Long foulCommitted;
 }

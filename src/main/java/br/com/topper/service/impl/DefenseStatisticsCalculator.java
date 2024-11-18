@@ -10,9 +10,9 @@ public class DefenseStatisticsCalculator implements StatisticsCalculator {
 
     @Override
     public Double calculate(StatisticsRequest requestDto) {
-        Double desarme = requestDto.getDefenseStatistics().getDesarme() * DefensePointsEnum.DESARME.getPoints();
-        Double saldoGols = requestDto.getDefenseStatistics().getSaldoGols() ? DefensePointsEnum.SALDO_GOLS.getPoints() : 0.0;
-        Double faltaCometida = requestDto.getDefenseStatistics().getFaltaCometida() * DefensePointsEnum.FALTA_COMETIDA.getPoints();
+        Double desarme = requestDto.getDefenseStatistics().getTackle() * DefensePointsEnum.DESARME.getPoints();
+        Double saldoGols = requestDto.getDefenseStatistics().getGoalDifference() ? DefensePointsEnum.SALDO_GOLS.getPoints() : 0.0;
+        Double faltaCometida = requestDto.getDefenseStatistics().getFoulCommitted() * DefensePointsEnum.FALTA_COMETIDA.getPoints();
 
         return desarme + saldoGols + faltaCometida;
     }

@@ -4,10 +4,7 @@ import br.com.topper.dto.PlayerDTO;
 import br.com.topper.dto.enuns.ClubsEnum;
 import br.com.topper.dto.enuns.PositionEnum;
 import br.com.topper.dto.enuns.StatusPlayerEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 
 @Entity
@@ -15,7 +12,7 @@ import lombok.Getter;
 public class Player {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String position;
@@ -23,6 +20,9 @@ public class Player {
     private String status;
     private String club;
     private Boolean isBought;
+
+    @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "player")
+    private PlayerData playerData;
 
     public Player() {}
 
@@ -48,6 +48,7 @@ public class Player {
                 .price(player.getPrice())
                 .status(player.getStatus())
                 .isBought(player.getIsBought())
+                .playerData(playerData.convertToDto(playerData))
                 .build();
     }
 

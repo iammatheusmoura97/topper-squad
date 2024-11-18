@@ -28,7 +28,7 @@ public class PlayerAdminController {
     public ResponseEntity<PlayerResponse> getPlayer(@PathVariable("id") Long id) {
         PlayerDTO player = playerService.getPlayer(id);
 
-        return ResponseEntity.ok(new PlayerResponse(player.getName(), player.getClub()));
+        return ResponseEntity.ok(new PlayerResponse(player.getName(), player.getClub(), player.getPlayerData()));
     }
 
 

@@ -6,7 +6,9 @@ import lombok.Getter;
 public class StatisticsRequest {
 
     private Long playerId;
-    private String playerName;
+    private Integer numRodada;
+    private Boolean isPlayed;
+
     private AttackStatisticsRequest attackStatistics;
     private DefenseStatisticsRequest defenseStatistics;
     private Boolean yellowCard;

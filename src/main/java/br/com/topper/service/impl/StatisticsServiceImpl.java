@@ -1,5 +1,6 @@
 package br.com.topper.service.impl;
 
+import br.com.topper.dto.ScoutDTO;
 import br.com.topper.dto.StatisticsDTO;
 import br.com.topper.dto.entity.Player;
 import br.com.topper.dto.entity.PlayerData;
@@ -11,7 +12,7 @@ import br.com.topper.service.StatisticsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
+import java.util.Objects;
 
 @Service
 @Slf4j
@@ -34,34 +35,26 @@ public class StatisticsServiceImpl implements StatisticsService {
     }
 
     @Override
-    public Double saveStatistics(StatisticsRequest requestDto) {
-        // Todo - Ao salvar uma nova estatistica, devera acumular com a existente. Associar a rodada do campeonato com a estatistica;
-        StatisticsDTO statisticsDTO = new StatisticsDTO();
+    public void saveStatistics(StatisticsRequest requestDto) {
+        ScoutDTO scout = new ScoutDTO();
+        scout.setAttack(requestDto.getAttackStatistics());
+        scout.setDefense(requestDto.getDefenseStatistics());
 
-        Map<String, Long> attackStatistics = Map.of(
-                "goal", requestDto.getAttackStatistics().getGoal(),
-                "assist", requestDto.getAttackStatistics().getAssist(),
-                "missedPenalty", requestDto.getAttackStatistics().getMissedPenalty()
-        );
-
-        Map<String, Object> defenseStatistics = Map.of(
-                "tackle", requestDto.getDefenseStatistics().getTackle(),
-                "foulCommitted", requestDto.getDefenseStatistics().getFoulCommitted(),
-                "goalDifference", requestDto.getDefenseStatistics().getGoalDifference()
-        );
-
-        statisticsDTO.setAttack(attackStatistics);
-        statisticsDTO.setDefense(defenseStatistics);
+        StatisticsDTO statistics = new StatisticsDTO(requestDto.getNumRodada(), requestDto.getIsPlayed(), scout);
 
         Player player = playerRepository.findPlayerById(requestDto.getPlayerId()).
                 orElseThrow(() -> new PlayerNotFoundException("Jogador não encontrado", requestDto.getPlayerId()));
 
-        log.info("Jogador encontrado: {}", player);
+        PlayerData playerData = player.getPlayerData();
 
-        PlayerData playerData = new PlayerData(player, statisticsDTO);
+        if(Objects.isNull(playerData)) {
+            playerData = new PlayerData(player, statistics);
+        } else {
+            playerData.getStatistics().add(statistics);
+        }
+
         playerDataRepository.save(playerData);
 
-        return calculatePoints(requestDto);
     }
 
     private double calculatePoints(StatisticsRequest requestDto) {

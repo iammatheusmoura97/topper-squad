@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import org.hibernate.annotations.Type;
 
+import java.util.List;
+
 @Entity
 @Getter
 public class PlayerData {
@@ -17,7 +19,7 @@ public class PlayerData {
 
     @Type(JsonBinaryType.class)
     @Column(columnDefinition = "jsonb")
-    private StatisticsDTO statistics;
+    private List<StatisticsDTO> statistics;
 
 //    @Type(JsonBinaryType.class)
 //    @Column(columnDefinition = "jsonb")
@@ -28,7 +30,7 @@ public class PlayerData {
     private Player player;
 
     public PlayerData(Player player, StatisticsDTO statistics) {
-        this.statistics = statistics;
+        this.statistics = List.of(statistics);
         this.player = player;
     }
 

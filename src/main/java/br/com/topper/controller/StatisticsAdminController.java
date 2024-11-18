@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping("/api/admin/statistics")
@@ -19,9 +22,13 @@ public class StatisticsAdminController {
     }
 
     @PostMapping
-    public ResponseEntity<Double> newStatistics(@RequestBody StatisticsRequest requestDto) {
-        Double totalPoints = statisticsService.saveStatistics(requestDto);
+    public ResponseEntity<Void> newStatistics(@RequestBody StatisticsRequest requestDto) {
+        statisticsService.saveStatistics(requestDto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/api/admin/player/{id}")
+                .buildAndExpand(requestDto.getPlayerId())
+                .toUri();
 
-        return ResponseEntity.ok(totalPoints);
+        return ResponseEntity.created(uri).build();
     }
 }

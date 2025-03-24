@@ -12,4 +12,11 @@ public class ScoutDTO {
     private AttackStatisticsRequest attack;
     private DefenseStatisticsRequest defense;
 
+    public ScoutDTO() {
+    }
+
+    public ScoutDTO(AttackStatisticsRequest attack, DefenseStatisticsRequest defense) {
+        this.attack = attack;
+        this.defense = defense;
+    }
 }

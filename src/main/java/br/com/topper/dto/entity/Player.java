@@ -1,11 +1,19 @@
 package br.com.topper.dto.entity;
 
 import br.com.topper.dto.PlayerDTO;
+import br.com.topper.dto.PlayerDataDTO;
+import br.com.topper.dto.StatisticsAccumulatedDTO;
+import br.com.topper.dto.StatisticsDTO;
 import br.com.topper.dto.enuns.ClubsEnum;
 import br.com.topper.dto.enuns.PositionEnum;
 import br.com.topper.dto.enuns.StatusPlayerEnum;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Getter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,8 +29,8 @@ public class Player {
     private String club;
     private Boolean isBought;
 
-    @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "player")
-    private PlayerData playerData;
+//    @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "player")
+//    private PlayerData playerData;
 
     public Player() {}
 
@@ -40,6 +48,21 @@ public class Player {
         this.isBought = isBought;
     }
 
+    public PlayerDTO convertToDto(Player player, List<StatisticsDTO> listStatisticsDTO, StatisticsAccumulatedDTO statisticsAccumulated) {
+        return PlayerDTO.builder()
+                .name(player.getName())
+                .club(player.getClub())
+                .position(player.getPosition())
+                .price(player.getPrice())
+                .status(player.getStatus())
+                .isBought(player.getIsBought())
+                .playerData(PlayerDataDTO.builder()
+                        .statistics(listStatisticsDTO)
+                        .statisticsAccumulated(statisticsAccumulated)
+                        .build())
+                .build();
+    }
+
     public PlayerDTO convertToDto(Player player) {
         return PlayerDTO.builder()
                 .name(player.getName())
@@ -48,7 +71,6 @@ public class Player {
                 .price(player.getPrice())
                 .status(player.getStatus())
                 .isBought(player.getIsBought())
-                .playerData(playerData.convertToDto(playerData))
                 .build();
     }
 

@@ -1,6 +1,9 @@
 server:
   port: 8081
 spring:
+  data:
+    mongodb:
+      uri: mongodb://topper1:topper@localhost:27017/topper_db?authSource=admin
   docker:
     compose:
       enabled: false

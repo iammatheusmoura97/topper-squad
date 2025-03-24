@@ -31,5 +31,6 @@ public class PlayerAdminController {
         return ResponseEntity.ok(new PlayerResponse(player.getName(), player.getClub(), player.getPlayerData()));
     }
 
+    // todo atualizar a situacao do jogador de provavel para em duvida
 
 }

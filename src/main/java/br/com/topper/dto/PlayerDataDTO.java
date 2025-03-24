@@ -10,4 +10,6 @@ import java.util.List;
 public class PlayerDataDTO {
 
     private List<StatisticsDTO> statistics;
+    private StatisticsAccumulatedDTO statisticsAccumulated;
+
 }

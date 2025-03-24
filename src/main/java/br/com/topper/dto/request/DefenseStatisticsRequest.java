@@ -1,6 +1,7 @@
 package br.com.topper.dto.request;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 @Getter
@@ -8,6 +9,9 @@ import lombok.ToString;
 public class DefenseStatisticsRequest {
 
     private Long tackle;
-    private Boolean goalDifference;
     private Long foulCommitted;
+
+    @Setter
+    private Boolean goalDifference;
+
 }

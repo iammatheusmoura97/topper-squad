@@ -1,6 +1,5 @@
 package br.com.topper.dto.entity;
 
-import br.com.topper.dto.PlayerDataDTO;
 import br.com.topper.dto.StatisticsDTO;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import jakarta.persistence.*;
@@ -36,9 +35,4 @@ public class PlayerData {
 
     public PlayerData() {}
 
-    public PlayerDataDTO convertToDto(PlayerData playerData) {
-        return PlayerDataDTO.builder()
-                .statistics(playerData.getStatistics())
-                .build();
-    }
 }

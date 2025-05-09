@@ -1,25 +1,21 @@
-FROM node:8.9.1
-
-# Diretorio de trabalho do container
-WORKDIR /app
-
-# Copia o package.json e o package-lock.json para o container
-COPY package*.json ./
-
-# Copia o restante dos arquivos para o container
-COPY . .
-
-USER root
-
-ENV NODE_ENV=dev
-
-RUN npm run build
-
-# expoe a porta 3000
-EXPOSE 3000
-
-# CMD ["tail", "-f", "/dev/null"]
-# CMD ["npm",  "build"]
-CMD ["sh", "-c", "sleep 3600"]
-# CMD ["sh", "-c", "npm run build && sleep 3600"]
-
+Creating pix-static-intranet-teste ... done
+Attaching to pix-static-intranet-teste                                                                                                                                                                                                                                                         
+pix-static-intranet-teste    | 
+pix-static-intranet-teste    | > pix-static-intranet@0.0.1 build /app
+pix-static-intranet-teste    | > rimraf dist && webpack --progress --profile --bail
+pix-static-intranet-teste    | 
+pix-static-intranet-teste    | /app/node_modules/rimraf/bin.js:47
+pix-static-intranet-teste    |       throw er
+pix-static-intranet-teste    |       ^
+pix-static-intranet-teste    | 
+pix-static-intranet-teste    | Error: EBUSY: resource busy or locked, rmdir 'dist'
+pix-static-intranet-teste    | npm ERR! code ELIFECYCLE
+pix-static-intranet-teste    | npm ERR! errno 1
+pix-static-intranet-teste    | npm ERR! pix-static-intranet@0.0.1 build: `rimraf dist && webpack --progress --profile --bail`
+pix-static-intranet-teste    | npm ERR! Exit status 1
+pix-static-intranet-teste    | npm ERR! 
+pix-static-intranet-teste    | npm ERR! Failed at the pix-static-intranet@0.0.1 build script.
+pix-static-intranet-teste    | npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+pix-static-intranet-teste    | 
+pix-static-intranet-teste    | npm ERR! A complete log of this run can be found in:
+pix-static-intranet-teste    | npm ERR!     /root/.npm/_logs/2025-05-09T17_45_46_343Z-debug.log

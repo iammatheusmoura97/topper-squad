@@ -1,4 +1,25 @@
-        config.plugins.push(
-            new webpack.NoEmitOnErrorsPlugin(),
-            new webpack.optimize.UglifyJsPlugin({ beautify: false, comments: false, sourceMap: false, mangle: { keep_fnames: false }, output: {comments: false} })
-        );
+FROM node:8.9.1
+
+# Diretorio de trabalho do container
+WORKDIR /app
+
+# Copia o package.json e o package-lock.json para o container
+COPY package*.json ./
+
+# Copia o restante dos arquivos para o container
+COPY . .
+
+USER root
+
+ENV NODE_ENV=dev
+
+RUN npm run build
+
+# expoe a porta 3000
+EXPOSE 3000
+
+# CMD ["tail", "-f", "/dev/null"]
+# CMD ["npm",  "build"]
+CMD ["sh", "-c", "sleep 3600"]
+# CMD ["sh", "-c", "npm run build && sleep 3600"]
+

@@ -1,7 +1,91 @@
-config.output = isTest ? {} : {
-        //path: root('../www'), Se for utilizar o build para um projeto Cordova, utilize esta configuracao
-        path: root('dist'),
-        //publicPath: AMBConfig.AMBApplicationConfig.baseUrl + AMBConfig.AMBApplicationConfig.webAppContextPath,
-        filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
-        chunkFilename: isProd ? 'chunk/[id].[hash].chunk.js' : 'chunk/[id].chunk.js'
-    };
+ > [5/5] RUN npm run build:                                                                                                                                                                                                                                                                    
+0.618                                                                                                                                                                                                                                                                                          
+0.618 > pix-static-intranet@0.0.1 build /app                                                                                                                                                                                                                                                   
+0.618 > rimraf dist && webpack --progress --profile --bail                                                                                                                                                                                                                                     
+0.618                                                                                                                                                                                                                                                                                          
+1.494  10% building modules 0/3 modules 3 active ...-loader/src/index.js!/app/src/main.ts
+1.795 [at-loader] Using typescript@2.3.4 from typescript and "tsconfig.json" from /app/tsconfig.json.
+1.795 
+41809ms building modules                                                                  
+43.36 68ms sealing
+43.42 0ms optimizing 
+43.42 0ms basic module optimization 
+43.42 10ms module optimization
+43.43 6ms advanced module optimization 
+43.44 29ms basic chunk optimization       
+43.47 0ms chunk optimization 
+43.47 6ms advanced chunk optimization 
+43.47 3ms module and chunk tree optimization 
+43.48 0ms chunk modules optimization 
+43.48 0ms advanced chunk modules optimization 
+43.48 24ms module reviving
+43.50 1ms module order optimization 
+43.50 18ms module id optimization
+43.52 9ms chunk reviving 
+43.53 0ms chunk order optimization 
+43.53 48ms chunk id optimization
+43.58 75ms hashing
+43.65 1ms module assets processing 
+43.65 135ms chunk assets processing
+43.79 455ms additional chunk assets processing
+44.24 1ms recording 
+44.24 50644ms additional asset processing
+94.89 480ms chunk asset optimization
+95.37  94% asset optimization
+95.37 [at-loader] Checking started in a separate process...
+98.36 (node:40) DeprecationWarning: Chunk.modules is deprecated. Use Chunk.getNumberOfModules/mapModules/forEachModule/containsModule instead.
+98.37 
+98.37 [at-loader] Ok, 2.997 sec.
+2999ms asset optimization
+98.39 Hash: edbcce219f4f94ef0c65
+98.39 Version: webpack 3.6.0
+98.39 Time: 96881ms
+98.39  6 assets
+98.39    [8] ./src/app/custom-component/modal-alert/modal-alert.ts 5.64 kB {3} [built]
+98.39        [] -> factory:398ms building:2096ms dependencies:270ms = 2764ms
+98.39   [34] ./src/app/custom-component/custom-components.module.ts 5.01 kB {3} [built]
+98.39        [] -> factory:397ms building:2049ms dependencies:2434ms = 4880ms
+98.39   [54] (webpack)/buildin/global.js 509 bytes {4} [built]
+98.39        [] -> factory:4335ms building:149ms = 4484ms
+98.39  [213] (webpack)/buildin/module.js 517 bytes {2} [built]
+98.39        [] -> factory:1342ms building:3910ms = 5252ms
+98.39  [269] ./src lazy 160 bytes {2} [built]
+98.39        [] -> factory:28715ms building:0ms = 28715ms
+98.39  [643] ./src/app/Globals.ts 15.7 kB {3} [built]
+98.39        [] -> factory:22ms building:2064ms dependencies:62ms = 2148ms
+98.39  [711] ./src/polyfills.ts 308 bytes {4} [built]
+98.39         factory:43ms building:4417ms = 4460ms
+98.39  [866] ./src/amb.ts 593 bytes {2} [built]
+98.39         factory:58ms building:4473ms dependencies:861ms = 5392ms
+98.39 [1265] ./src/main.ts 621 bytes {3} [built]
+98.39         factory:59ms building:4461ms = 4520ms
+98.39 [1266] ./src/app/app.module.ts 3.33 kB {3} [built]
+98.39        [] -> factory:268ms building:71ms dependencies:4881ms = 5220ms
+98.39 [1267] ./src/app/app.config.ts 274 bytes {3} [built]
+98.39        [] -> factory:18ms building:533ms = 551ms
+98.39 [1268] ./src/app/app.component.ts 1.18 kB {3} [built]
+98.39        [] -> factory:19ms building:1719ms dependencies:1ms = 1739ms
+98.39 [1271] ./src/app/app.routing.module.ts 1.5 kB {3} [built]
+98.39        [] -> factory:20ms building:1738ms dependencies:1ms = 1759ms
+98.39 [1618] ./src/app/HttpInterceptors.ts 1.77 kB {3} [built]
+98.39        [] -> factory:20ms building:1815ms dependencies:4ms = 1839ms
+98.39 [1619] ./src/app/CustomErrorHandler.ts 8.27 kB {3} [built]
+98.39        [] -> factory:22ms building:2337ms dependencies:0ms = 2359ms
+98.39     + 1778 hidden modules
+98.39 
+98.39 ERROR in chunk/0.edbcce219f4f94ef0c65.chunk.js from UglifyJs
+98.39 Name expected [chunk/0.edbcce219f4f94ef0c65.chunk.js:160,6]
+98.39 Child html-webpack-plugin for "index.html":
+98.39      1 asset
+98.39        [0] ./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html 2.22 kB {0} [built]
+98.39             factory:65ms building:4711ms = 4776ms
+98.88 npm ERR! code ELIFECYCLE
+98.88 npm ERR! errno 2
+98.88 npm ERR! pix-static-intranet@0.0.1 build: `rimraf dist && webpack --progress --profile --bail`
+98.88 npm ERR! Exit status 2
+98.88 npm ERR! 
+98.88 npm ERR! Failed at the pix-static-intranet@0.0.1 build script.
+98.88 npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+99.04 
+99.04 npm ERR! A complete log of this run can be found in:
+99.04 npm ERR!     /root/.npm/_logs/2025-05-09T15_42_40_268Z-debug.log

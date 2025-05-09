@@ -1,15 +1,1 @@
-└── app
-    ├── Dockerfile
-    ├── assets
-    ├── dist_
-    ├── docker-compose.yml
-    ├── node_modules
-    ├── node_modules.zip
-    ├── package.json
-    ├── postcss.config.js
-    ├── public
-    ├── src
-    ├── styles
-    ├── tsconfig.json
-    ├── tslint.json
-    └── webpack.config.js
+"build": "rimraf dist && webpack --progress --profile --bail",

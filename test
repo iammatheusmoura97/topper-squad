@@ -1,1 +1,1 @@
-"build": "rimraf dist && webpack --progress --profile --bail",
+"@amb/core": "file:../@amb/core/dist/amb-core-0.0.15.tgz",

@@ -1,1 +1,7 @@
-"@amb/core": "file:../@amb/core/dist/amb-core-0.0.15.tgz",
+config.output = isTest ? {} : {
+        //path: root('../www'), Se for utilizar o build para um projeto Cordova, utilize esta configuracao
+        path: root('dist'),
+        //publicPath: AMBConfig.AMBApplicationConfig.baseUrl + AMBConfig.AMBApplicationConfig.webAppContextPath,
+        filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
+        chunkFilename: isProd ? 'chunk/[id].[hash].chunk.js' : 'chunk/[id].chunk.js'
+    };
